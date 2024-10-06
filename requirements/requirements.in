@@ -1,0 +1,19 @@
+# Environment variable management
+python_dotenv
+
+# HTTP requests
+requests
+
+# Python development
+ipython
+pyyaml
+
+# Python formatting
+flake8
+pylint
+
+# Python testing
+pytest
+
+# YAML formatting
+yamllint

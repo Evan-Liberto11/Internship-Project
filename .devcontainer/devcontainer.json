@@ -1,0 +1,38 @@
+{
+	"name": "ia-labor-rates-redacted",
+	"build": {
+		"context": "..",
+		"dockerfile": "../Dockerfile.dev"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.vscode-github-actions",
+				"GitHub.vscode-pull-request-github",
+				"ms-azuretools.vscode-docker",
+				"streetsidesoftware.code-spell-checker",
+				"DavidAnson.vscode-markdownlint",
+				"mechatroner.rainbow-csv",
+				"ms-python.python",
+				"redhat.vscode-yaml"
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "/bin/bash"
+					}
+				},
+				"markdownlint.config": {
+    				"extends": "/workspaces/ia-labor-rates-redacted/.github/linters/.markdown-lint.yml"
+    			}
+			}
+		}
+	},
+	// Copy the generated requirements.txt file from to the requirements folder
+	"postCreateCommand": "./scripts/copy_requirements.sh"
+	// Disable container networking for testing
+	// "runArgs":[
+	// 	"--network=none"
+	// ]
+}

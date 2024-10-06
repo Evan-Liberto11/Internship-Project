@@ -1,0 +1,32 @@
+# Start your image with python 3.12 slim
+FROM python:3.12-slim
+
+# Sets a label for creator and version
+LABEL creator = "Evan Liberto" && \
+      version = 1.0
+
+# Sets the working directory
+WORKDIR /code
+
+# Fetches latest version of OS packages
+# and installs git
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends git=1:2.* ssh=1:9.* && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copies requirements file from host to Docker Image
+COPY requirements/requirements.in /code/
+
+# Installs python pip, pip-tools, generates requirements.txt from requirements.in
+RUN python -m pip install --no-cache-dir --upgrade pip==24.1.2 && \
+    python -m pip install --no-cache-dir pip-tools==7.4.1 && \
+    pip-compile --upgrade --rebuild /code/requirements.in && \
+    python -m pip install --no-cache-dir --requirement /code/requirements.txt
+
+# Sets Environment variable to working directory
+ENV PYTHONPATH=/code
+
+# Starts Bash
+CMD ["bash"]
