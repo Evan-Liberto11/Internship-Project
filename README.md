@@ -1,27 +1,74 @@
-# Automation Consulting **REDACTED** Tool
+# 📊 Internship Project – Service Project Labor Rate Automation
 
-[![Super-Linter](https://github.com/**REDACTED**/**REDACTED**/actions/workflows/code_lint.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
+This project automates **service project labor rate lookups** using Tableau data. It was developed during an internship to improve efficiency and eliminate manual lookup processes.
 
-## **REDACTED** Rate Chart
+## 🚀 Features
+- 🔎 **Automated Labor Rate Lookup** – Query and fetch labor rates directly from Tableau data sources.
+- 📂 **Data Integration** – Uses mock CSV and YAML role definitions for testing and extensibility.
+- 🐍 **Python Application** – Modular code structure with an `app/` package.
+- 🛠️ **Containerized Development** – Includes Docker and DevContainer setup for consistent environments.
+- 📑 **Script Utilities** – Helper scripts for dependency management and reproducible builds.
 
-|                    **Resource**                    | **Rate**     |
-| -------------------------------------------------- | ------------ |
-| **REDACTED**                                       | **REDACTED** |
-| **REDACTED**                                       | **REDACTED** |
-| TBD                                                | TBD          |
-| TBD                                                | TBD          |
-| TBD                                                | TBD          |
-| TBD                                                | TBD          |
-| TBD                                                | TBD          |
+## 🗂️ Project Structure
+```
+Internship-Project-main/
+├── app/
+│   ├── __init__.py
+│   ├── __main__.py            # Entry point
+│   ├── ia_labor_rates.py      # Core automation logic
+│   ├── location_uids.py       # Location ID handling
+│   └── data/
+│       ├── mock_csv_response.csv
+│       └── roles.yml
+├── requirements/
+│   ├── requirements.in
+│   └── requirements.txt
+├── scripts/
+│   └── copy_requirements.sh
+├── .devcontainer/             # VS Code Dev Container
+├── Dockerfile.dev             # Development Dockerfile
+├── .dockerignore
+├── .gitignore
+├── LICENSE
+└── README.md
+```
 
-<sub>Generated with [Tables Generator](https://www.tablesgenerator.com/markdown_tables "Tables Generator")</sub>
+## ⚙️ Installation
 
-## Overview
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/<your-username>/Internship-Project-main.git
+   cd Internship-Project-main
+   ```
 
-Retrieves **REDACTED**.
+2. **Set up a virtual environment**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate   # Linux/Mac
+   venv\Scripts\activate      # Windows
+   ```
 
-A [GitHub Action](.#TODO) runs daily to retrieve the latest **REDACTED**.
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements/requirements.txt
+   ```
 
-## Usage
+4. **Run the application**
+   ```bash
+   python -m app
+   ```
 
-TODO
+## 🐳 Run with Docker
+Build and run inside a containerized environment:
+```bash
+docker build -t internship-project -f Dockerfile.dev .
+docker run -it internship-project
+```
+
+## 📖 Usage
+- Modify `app/data/mock_csv_response.csv` for test inputs.
+- Update role filters in `app/data/roles.yml`.
+- Run with `python -m app` to test lookups.
+
+## 📜 License
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
